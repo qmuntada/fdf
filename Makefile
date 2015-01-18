@@ -16,15 +16,22 @@ SRC = fdf.c color.c command.c display.c draw.c draw_triangle.c env.c \
 		 eventkey.c height.c isometric.c parallel.c
 OBJ = $(SRC:.c=.o)
 LIBX = -lm -I/usr/X11/include -L/usr/X11/lib -lX11 -lXext -lmlx libft/libft.a
+LIBXL = -lm libft/libft.a -L/usr/lib/X11 -lmlx -lXext -lX11
+
 
 all : $(NAME)
 
-.PHONY : libft clean fclean re norme
+.PHONY : linux libft clean fclean re norme
 
 $(NAME) : libft
-	@echo "Creating executable $@ ..."
+	@echo "Creating MAC executable $@ ..."
 	@gcc $(CFLAGS) -c $(SRC)
 	@gcc -o $(NAME) $(OBJ) $(LIBX)
+
+linux: libft
+	@echo "Creating LINUX executable $@ ..."
+	@gcc $(CFLAGS) -c $(SRC)
+	@gcc -o $(NAME) $(OBJ) $(LIBXL)
 
 libft:
 	@make -C libft fclean
