@@ -6,7 +6,7 @@
 /*   By: qmuntada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 11:33:54 by qmuntada          #+#    #+#             */
-/*   Updated: 2015/01/07 18:58:03 by qmuntada         ###   ########.fr       */
+/*   Updated: 2015/01/19 16:32:58 by qmuntada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define C_MAGENTA      "\033[35m"
 # define C_CYAN         "\033[36m"
 # define C_GRAY         "\033[37m"
-# define BUFF_SIZE 1
+# define BUFF_SIZE 100000
 
 typedef struct		s_list
 {

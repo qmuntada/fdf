@@ -6,7 +6,7 @@
 /*   By: qmuntada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/13 18:20:24 by qmuntada          #+#    #+#             */
-/*   Updated: 2015/01/17 16:24:40 by qmuntada         ###   ########.fr       */
+/*   Updated: 2015/01/19 16:43:55 by qmuntada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	fillbottri(t_coord *p1, t_coord *p2, t_coord *p3, t_env *e)
 {
 	float		invslope1;
 	float		invslope2;
-	t_fcord		p4;
-	t_fcord		p5;
+	t_coord		p4;
+	t_coord		p5;
 	int			x;
 
 	p4.y = p1->y;
@@ -54,8 +54,8 @@ void	filltoptri(t_coord *p1, t_coord *p2, t_coord *p3, t_env *e)
 {
 	float		invslope1;
 	float		invslope2;
-	t_fcord		p4;
-	t_fcord		p5;
+	t_coord		p4;
+	t_coord		p5;
 	int			x;
 
 	p4.y = p3->y;

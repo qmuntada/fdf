@@ -6,7 +6,7 @@
 /*   By: qmuntada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/15 14:17:44 by qmuntada          #+#    #+#             */
-/*   Updated: 2015/01/17 16:23:43 by qmuntada         ###   ########.fr       */
+/*   Updated: 2015/01/19 16:45:08 by qmuntada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		heightx(t_coord *p1, t_coord *p2, int z)
 	return (z);
 }
 
-int		color(t_env *e, t_fcord *p1, t_fcord *p2, int z)
+int		color(t_env *e, t_coord *p1, t_coord *p2, int z)
 {
 	z += (p1->y >= 0 ? -p1->y : p1->y);
 	z *= (p2->z + (p1->z >= 0 ? -p1->z : p1->z));
@@ -30,7 +30,7 @@ int		color(t_env *e, t_fcord *p1, t_fcord *p2, int z)
 	return (getlevel(e, z));
 }
 
-void	horline(t_env *e, t_fcord *p1, t_fcord *p2, int y)
+void	horline(t_env *e, t_coord *p1, t_coord *p2, int y)
 {
 	int		i1;
 	int		i2;

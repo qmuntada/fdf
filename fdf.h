@@ -6,7 +6,7 @@
 /*   By: qmuntada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/17 16:20:20 by qmuntada          #+#    #+#             */
-/*   Updated: 2015/01/17 16:29:44 by qmuntada         ###   ########.fr       */
+/*   Updated: 2015/01/19 16:44:38 by qmuntada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,9 @@ typedef struct		s_color
 
 typedef struct		s_coord
 {
-	int				x;
-	int				y;
-	int				z;
+	float			x;
+	float			y;
+	float			z;
 }					t_coord;
 
 typedef struct		s_mcoord
@@ -87,13 +87,6 @@ typedef struct		s_mcoord
 	t_coord			p3;
 	t_coord			p4;
 }					t_mcoord;
-
-typedef struct		s_fcord
-{
-	float			x;
-	float			y;
-	float			z;
-}					t_fcord;
 
 void				display_tab(int **array, int length,
 		int width, int **color);
@@ -109,7 +102,7 @@ t_env				initenv(int length, int width, int **array, int **color);
 int					getlevel(t_env *e, int z);
 void				draw_triangle(t_coord *p1, t_coord *p2,
 		t_coord *p3, t_env *e);
-void				horline(t_env *e, t_fcord *p1, t_fcord *p2, int y);
+void				horline(t_env *e, t_coord *p1, t_coord *p2, int y);
 int					heightx(t_coord *p1, t_coord *p2, int z);
 int					eventkey(t_env *e, int keycode);
 void				display_param(t_env *e);
