@@ -26,7 +26,6 @@
 
 typedef struct		s_img
 {
-	void			*win;
 	void			*img_ptr;
 	char			*img;
 	int				bpp;
