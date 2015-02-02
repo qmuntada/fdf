@@ -34,8 +34,8 @@ void		parallel(t_env *e)
 	i = -1;
 	while (++i < e->width)
 	{
-		j = -1;
-		while (++j < e->length)
+		j = e->length;
+		while (--j >= 0)
 		{
 			p1 = get_parallelpoint(i, j, e->array[i][j], e);
 			if (i < e->width - 1)

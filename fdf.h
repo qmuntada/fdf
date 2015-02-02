@@ -13,8 +13,9 @@
 #ifndef FDF_H
 # define FDF_H
 
-# define HEIGHT 1080
-# define WIDTH 1920
+# define WIDTH 1600
+# define HEIGHT 900
+
 
 # include <mlx.h>
 # include <unistd.h>
@@ -31,8 +32,6 @@ typedef struct		s_img
 	int				bpp;
 	int				sl;
 	int				endian;
-	int				width;
-	int				height;
 }					t_img;
 
 typedef struct		s_env
@@ -42,27 +41,34 @@ typedef struct		s_env
 	int				**array;
 	int				length;
 	int				width;
-	int				scale;
-	int				x_origin;
-	int				y_origin;
+	double			scale;
 	int				z_max;
 	int				z_min;
 	int				z_div;
-	int				x_offset;
-	int				y_offset;
-	float			height;
+	double			x_offset;
+	double			y_offset;
+	double			x_origin;
+	double			y_origin;
+	double			height;
 	int				**color;
 	int				cnum;
 	int				tpro;
 	int				wire;
-	float			cte1;
-	float			cte2;
-	float			cte3;
-	float			cte4;
+	double			cte1;
+	double			cte2;
+	double			cte3;
+	double			cte4;
 	int				x;
 	int				y;
 	int				z;
 	t_img			img;
+	double			pasx;
+	double			pasy;
+	double			pasy1;
+	double			pasy2;
+	double			pasz;
+	double			pasz1;
+	double			pasz2;
 }					t_env;
 
 typedef struct		s_color
@@ -74,9 +80,9 @@ typedef struct		s_color
 
 typedef struct		s_coord
 {
-	float			x;
-	float			y;
-	float			z;
+	double			x;
+	double			y;
+	double			z;
 }					t_coord;
 
 typedef struct		s_mcoord
@@ -93,16 +99,13 @@ void				ligne(t_env *e, t_coord *c1, t_coord *c2);
 void				parallel(t_env *e);
 void				isometric(t_env *e);
 void				isometricf(t_env *e);
-int					colorx(t_env *e, t_coord *p1, t_coord *p2, int z);
-int					colory(t_env *e, t_coord *p1, t_coord *p2, int z);
 t_env				*revarray(t_env *e, int sens);
 int					**getcolor(char **av, int ac);
 t_env				initenv(int length, int width, int **array, int **color);
-int					getlevel(t_env *e, int z);
+int					getlevel(t_env *e, double z);
 void				draw_triangle(t_coord *p1, t_coord *p2,
 		t_coord *p3, t_env *e);
-void				horline(t_env *e, t_coord *p1, t_coord *p2, int y);
-int					heightx(t_coord *p1, t_coord *p2, int z);
+void				horline(t_env *e, t_coord *p1, t_coord *p2, int x);
 int					eventkey(t_env *e, int keycode);
 void				display_param(t_env *e);
 void				pixel_put(t_env *e, int x, int y, int color);

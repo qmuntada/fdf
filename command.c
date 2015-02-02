@@ -36,11 +36,11 @@ int		**getcolor(char **av, int ac)
 		color[0][2] = ft_atoi(av[4]);
 	}
 	else
-		color[0] = putcolor(0x000000, 0x808080, 0xffffff);
+		color[0] = putcolor(0x000000, 0x808080, 0xFFFFFF);
 	color[1] = putcolor(0x0070e0, 0x42c6ff, 0xf3d85e);
 	color[2] = putcolor(0xb9280e, 0x3d231a, 0x27160c);
 	color[3] = putcolor(0x1e330f, 0x22120c, 0xf6f8ec);
-	color[4] = putcolor(0xff0000, 0x00ff00, 0x0000ff);
+	color[4] = putcolor(0x0000ff, 0x00ff00, 0xff0000);
 	return (color);
 }
 

@@ -37,7 +37,7 @@ int		findcolor(t_color *color, int z, int z_min, int z_max)
 	return (v);
 }
 
-int		getlevel(t_env *e, int z)
+int		getlevel(t_env *e, double z)
 {
 	t_color		color;
 
@@ -53,32 +53,9 @@ int		getlevel(t_env *e, int z)
 		color.color1 = e->color[e->cnum][0];
 		color.color2 = e->color[e->cnum][1];
 		return (findcolor(&color, z, (e->z_min + e->z_div), \
-		(e->z_min + e->z_div * 2)));
+			(e->z_min + e->z_div * 2)));
 	}
-	else if (z <= e->z_max)
-	{
-		color.color1 = e->color[e->cnum][1];
-		color.color2 = e->color[e->cnum][2];
-		return (findcolor(&color, z, (e->z_min + e->z_div * 2), e->z_max));
-	}
-	return (0x000000);
-}
-
-int		colorx(t_env *e, t_coord *p1, t_coord *p2, int z)
-{
-	z += (p1->y >= 0 ? -p1->x : p1->x);
-	z *= (p2->z + (p1->z >= 0 ? -p1->z : p1->z));
-	z /= (float)(p2->x + (p1->x >= 0 ? -p1->x : p1->x));
-	z += p1->z;
-	z = getlevel(e, z);
-	return (z);
-}
-
-int		colory(t_env *e, t_coord *p1, t_coord *p2, int z)
-{
-	z += (p1->y >= 0 ? -p1->y : p1->y);
-	z *= (p2->z + (p1->z >= 0 ? -p1->z : p1->z));
-	z /= (float)(p2->y + (p1->y >= 0 ? -p1->y : p1->y));
-	z += p1->z;
-	return (getlevel(e, z));
+	color.color1 = e->color[e->cnum][1];
+	color.color2 = e->color[e->cnum][2];
+	return (findcolor(&color, z, (e->z_min + e->z_div * 2), e->z_max));
 }

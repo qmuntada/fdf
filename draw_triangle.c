@@ -27,8 +27,6 @@ void	pixel_put(t_env *e, int x, int y, int color)
 
 void	fillbottri(t_coord *p1, t_coord *p2, t_coord *p3, t_env *e)
 {
-	float		invslope1;
-	float		invslope2;
 	t_coord		p4;
 	t_coord		p5;
 	int			x;
@@ -37,23 +35,23 @@ void	fillbottri(t_coord *p1, t_coord *p2, t_coord *p3, t_env *e)
 	p5.y = p1->y;
 	p4.z = p1->z;
 	p5.z = p1->z;
-	invslope1 = (float)(p2->y - p1->y) / (float)(p2->x - p1->x);
-	invslope2 = (float)(p3->y - p1->y) / (float)(p3->x - p1->x);
+	e->pasy1 = (double)(p2->y - p1->y) / (double)(p2->x - p1->x);
+	e->pasy2 = (double)(p3->y - p1->y) / (double)(p3->x - p1->x);
+	e->pasz1 = (double)(p2->z - p1->z) / (double)(p2->x - p1->x);
+	e->pasz2 = (double)(p3->z - p1->z) / (double)(p3->x - p1->x);
 	x = p1->x - 1;
 	while (++x <= p2->x)
 	{
 		horline(e, &p4, &p5, x);
-		p4.y += invslope1;
-		p5.y += invslope2;
-		p4.z = heightx(p1, p2, x);
-		p5.z = heightx(p1, p3, x);
+		p4.y += e->pasy1;
+		p5.y += e->pasy2;
+		p4.z += e->pasz1;
+		p5.z += e->pasz2;
 	}
 }
 
 void	filltoptri(t_coord *p1, t_coord *p2, t_coord *p3, t_env *e)
 {
-	float		invslope1;
-	float		invslope2;
 	t_coord		p4;
 	t_coord		p5;
 	int			x;
@@ -62,15 +60,17 @@ void	filltoptri(t_coord *p1, t_coord *p2, t_coord *p3, t_env *e)
 	p5.y = p3->y;
 	p4.z = p3->z;
 	p5.z = p3->z;
-	invslope1 = (float)(p3->y - p1->y) / (float)(p3->x - p1->x);
-	invslope2 = (float)(p3->y - p2->y) / (float)(p3->x - p2->x);
+	e->pasy1 = (double)(p3->y - p1->y) / (double)(p3->x - p1->x);
+	e->pasy2 = (double)(p3->y - p2->y) / (double)(p3->x - p2->x);
+	e->pasz1 = (double)(p3->z - p1->z) / (double)(p3->x - p1->x);
+	e->pasz2 = (double)(p3->z - p2->z) / (double)(p3->x - p2->x);
 	x = p3->x + 1;
 	while (--x > p1->x)
 	{
-		p4.y -= invslope1;
-		p5.y -= invslope2;
-		p4.z = heightx(p1, p3, x);
-		p5.z = heightx(p2, p3, x);
+		p4.y -= e->pasy1;
+		p5.y -= e->pasy2;
+		p4.z -= e->pasz1;
+		p5.z -= e->pasz2;
 		horline(e, &p4, &p5, x);
 	}
 }
@@ -79,18 +79,23 @@ void	draw_triangle(t_coord *p1, t_coord *p2, t_coord *p3, t_env *e)
 {
 	t_coord p4;
 
-	if (p2->x == p3->x)
-		fillbottri(p1, p2, p3, e);
-	else if (p1->x == p2->x)
-		filltoptri(p1, p2, p3, e);
-	else
+	if (((p1->x > 0 && p1->x < WIDTH) && (p1->y > 0 && p1->y < HEIGHT)) || \
+			((p2->x > 0 && p2->x < WIDTH) && (p2->y > 0 && p2->y < HEIGHT)) \
+			|| ((p3->x > 0 && p3->x < WIDTH) && (p3->y > 0 && p3->y < HEIGHT)))
 	{
-		p4.y = (int)(p1->y + ((float)(p2->x - p1->x) / (float)(p3->x - p1->x))
-				* (p3->y - p1->y));
-		p4.x = p2->x;
-		p4.z = (int)(p1->z + ((float)(p2->x - p1->x) / (float)(p3->x - p1->x))
-				* (p3->z - p1->z));
-		fillbottri(p1, p2, &p4, e);
-		filltoptri(p2, &p4, p3, e);
+		if (p2->x == p3->x)
+			fillbottri(p1, p2, p3, e);
+		else if (p1->x == p2->x)
+			filltoptri(p1, p2, p3, e);
+		else
+		{
+			p4.y = (int)(p1->y + ((float)(p2->x - p1->x) / (float)(p3->x - p1->x))
+					* (p3->y - p1->y));
+			p4.x = p2->x;
+			p4.z = (int)(p1->z + ((float)(p2->x - p1->x) / (float)(p3->x - p1->x))
+					* (p3->z - p1->z));
+			fillbottri(p1, p2, &p4, e);
+			filltoptri(p2, &p4, p3, e);
+		}
 	}
 }

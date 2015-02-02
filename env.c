@@ -15,9 +15,7 @@
 void	init_img(t_env *e)
 {
 	e->mlx = mlx_init();
-	e->win = mlx_new_window(e->mlx, 1920, 1080, "FDF@42");
-	e->img.width = WIDTH;
-	e->img.height = HEIGHT;
+	e->win = mlx_new_window(e->mlx, WIDTH, HEIGHT, "FDF@42");
 	e->img.img_ptr = mlx_new_image(e->mlx, WIDTH, HEIGHT);
 	e->img.img = mlx_get_data_addr(e->img.img_ptr, &e->img.bpp, \
 									&e->img.sl, &e->img.endian);
@@ -70,6 +68,8 @@ t_env	initenv(int length, int width, int **array, int **color)
 
 	e.x_offset = 0;
 	e.y_offset = 0;
+	e.x_origin = 0;
+	e.y_origin = 0;
 	e.array = array;
 	e.length = length;
 	e.width = width;
@@ -81,9 +81,7 @@ t_env	initenv(int length, int width, int **array, int **color)
 	e.color = color;
 	e.cnum = 0;
 	e.z_div = (e.z_min + e.z_max) / 3;
-	e.scale = 1500 / (e.width + e.length);
-	e.x_origin = (e.width / 2) * e.scale;
-	e.y_origin = (e.length / 2) * e.scale;
+	e.scale = ((double)(WIDTH + HEIGHT) / 2.0) / ((double)(e.width + e.length) / 2.0);
 	e.cte1 = 0.75;
 	e.cte2 = 0.75;
 	e.cte3 = e.cte1 / 2.0;
