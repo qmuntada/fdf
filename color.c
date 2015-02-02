@@ -6,7 +6,7 @@
 /*   By: qmuntada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/08 19:18:01 by qmuntada          #+#    #+#             */
-/*   Updated: 2015/02/02 18:09:08 by qmuntada         ###   ########.fr       */
+/*   Updated: 2015/02/02 18:31:40 by qmuntada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,13 @@ int		getlevel(t_env *e, double z)
 		color.color1 = e->color[e->cnum][0];
 		color.color2 = e->color[e->cnum][1];
 		return (findcolor(&color, z, (e->z_min + e->z_div), \
-			(e->z_min + e->z_div * 2)));
+		(e->z_min + e->z_div * 2)));
 	}
-	color.color1 = e->color[e->cnum][1];
-	color.color2 = e->color[e->cnum][2];
-	return (findcolor(&color, z, (e->z_min + e->z_div * 2), e->z_max));
+	else if (z <= e->z_max)
+	{
+		color.color1 = e->color[e->cnum][1];
+		color.color2 = e->color[e->cnum][2];
+		return (findcolor(&color, z, (e->z_min + e->z_div * 2), e->z_max));
+	}
+	return (0);
 }

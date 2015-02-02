@@ -6,7 +6,7 @@
 /*   By: qmuntada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/03 18:04:16 by qmuntada          #+#    #+#             */
-/*   Updated: 2015/01/17 16:27:34 by qmuntada         ###   ########.fr       */
+/*   Updated: 2015/02/02 18:26:50 by qmuntada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,15 @@ t_env	initenv(int length, int width, int **array, int **color)
 	e.length = length;
 	e.width = width;
 	e.height = 1;
-	e.tpro = 0;
+	e.tpro = 1;
 	e.wire = 0;
 	e = getminmax(&e);
 	e = absarray(&e);
 	e.color = color;
 	e.cnum = 0;
 	e.z_div = (e.z_min + e.z_max) / 3;
-	e.scale = ((double)(WIDTH + HEIGHT) / 2.0) / ((double)(e.width + e.length) / 2.0);
+	e.scale = ((double)(WIDTH + HEIGHT) / 2.0) / \
+				((double)(e.width + e.length) / 2.0);
 	e.cte1 = 0.75;
 	e.cte2 = 0.75;
 	e.cte3 = e.cte1 / 2.0;

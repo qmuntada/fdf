@@ -6,7 +6,7 @@
 /*   By: qmuntada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/17 17:35:49 by qmuntada          #+#    #+#             */
-/*   Updated: 2015/01/17 16:23:13 by qmuntada         ###   ########.fr       */
+/*   Updated: 2015/02/02 18:22:59 by qmuntada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,23 @@ char	*theme(int i)
 
 void	display_param(t_env *e)
 {
-	mlx_string_put(e->mlx, e->win, 20, HEIGHT - 70, 0xFFFFFF, "Taux de relief :");
-	mlx_string_put(e->mlx, e->win, 120, HEIGHT - 70, 0xFFFFFF, ft_itoa(e->height * 10));
-	mlx_string_put(e->mlx, e->win, 20, HEIGHT - 56, 0xFFFFFF, "Theme de couleur :");
+	mlx_string_put(e->mlx, e->win, 20, \
+			HEIGHT - 70, 0xFFFFFF, "Taux de relief :");
+	mlx_string_put(e->mlx, e->win, 120, \
+			HEIGHT - 70, 0xFFFFFF, ft_itoa(e->height * 10));
+	mlx_string_put(e->mlx, e->win, 20, \
+			HEIGHT - 56, 0xFFFFFF, "Theme de couleur :");
 	mlx_string_put(e->mlx, e->win, 135, HEIGHT - 56, 0xFFFFFF, theme(e->cnum));
-	mlx_string_put(e->mlx, e->win, 20, HEIGHT - 42, 0xFFFFFF, "Niveau de Zoom :");
-	mlx_string_put(e->mlx, e->win, 125, HEIGHT - 42, 0xFFFFFF, ft_itoa(e->scale * 10));
-	mlx_string_put(e->mlx, e->win, 20, HEIGHT - 28, 0xFFFFFF, "Type de projection");
+	mlx_string_put(e->mlx, e->win, 20, \
+			HEIGHT - 42, 0xFFFFFF, "Niveau de Zoom :");
+	mlx_string_put(e->mlx, e->win, 125, \
+			HEIGHT - 42, 0xFFFFFF, ft_itoa(e->scale * 10));
+	mlx_string_put(e->mlx, e->win, 20, \
+			HEIGHT - 28, 0xFFFFFF, "Type de projection");
 	mlx_string_put(e->mlx, e->win, 135, HEIGHT - 28, 0xFFFFFF,
 			(e->tpro == 0 ? "Isometrique " : "Parallele"));
-	mlx_string_put(e->mlx, e->win, 20, HEIGHT - 14, 0xFFFFFF, "Mode wireframe :");
+	mlx_string_put(e->mlx, e->win, 20, \
+			HEIGHT - 14, 0xFFFFFF, "Mode wireframe :");
 	mlx_string_put(e->mlx, e->win, 125, HEIGHT - 14, 0xFFFFFF,
 			(e->wire == 0 ? "Oui" : "Non"));
 }
