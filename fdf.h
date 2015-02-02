@@ -6,7 +6,7 @@
 /*   By: qmuntada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/17 16:20:20 by qmuntada          #+#    #+#             */
-/*   Updated: 2015/01/19 16:44:38 by qmuntada         ###   ########.fr       */
+/*   Updated: 2015/02/02 17:49:33 by qmuntada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ typedef struct		s_color
 {
 	int				color1;
 	int				color2;
-	int				z;
 }					t_color;
 
 typedef struct		s_coord
