@@ -27,7 +27,7 @@
 # define C_MAGENTA      "\033[35m"
 # define C_CYAN         "\033[36m"
 # define C_GRAY         "\033[37m"
-# define BUFF_SIZE 1000
+# define BUFF_SIZE 1
 
 typedef struct		s_list
 {

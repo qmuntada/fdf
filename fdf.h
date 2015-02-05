@@ -6,7 +6,7 @@
 /*   By: qmuntada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/17 16:20:20 by qmuntada          #+#    #+#             */
-/*   Updated: 2015/02/02 17:49:33 by qmuntada         ###   ########.fr       */
+/*   Updated: 2015/02/05 17:05:27 by qmuntada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # define WIDTH 1600
 # define HEIGHT 900
-
 
 # include <mlx.h>
 # include <unistd.h>

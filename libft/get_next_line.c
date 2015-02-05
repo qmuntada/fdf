@@ -6,7 +6,7 @@
 /*   By: qmuntada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/13 16:04:03 by qmuntada          #+#    #+#             */
-/*   Updated: 2014/11/28 16:15:02 by qmuntada         ###   ########.fr       */
+/*   Updated: 2015/02/05 16:58:05 by qmuntada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,3 @@ int		get_next_line(int fd, char **line)
 	}
 	return (status);
 }
-

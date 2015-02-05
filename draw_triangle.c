@@ -6,7 +6,7 @@
 /*   By: qmuntada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/13 18:20:24 by qmuntada          #+#    #+#             */
-/*   Updated: 2015/02/02 18:24:03 by qmuntada         ###   ########.fr       */
+/*   Updated: 2015/02/05 17:04:56 by qmuntada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,11 @@ void	draw_triangle(t_coord *p1, t_coord *p2, t_coord *p3, t_env *e)
 			filltoptri(p1, p2, p3, e);
 		else
 		{
-			p4.y = (p1->y + ((p2->x - p1->x) / (p3->x - p1->x)) * (p3->y - p1->y));
+			p4.y = (p1->y + ((p2->x - p1->x) / (p3->x - p1->x)) * \
+					(p3->y - p1->y));
 			p4.x = p2->x;
-			p4.z = (p1->z + ((p2->x - p1->x) / (p3->x - p1->x)) * (p3->z - p1->z));
+			p4.z = (p1->z + ((p2->x - p1->x) / (p3->x - p1->x)) * \
+					(p3->z - p1->z));
 			fillbottri(p1, p2, &p4, e);
 			filltoptri(p2, &p4, p3, e);
 		}
