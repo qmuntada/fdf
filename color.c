@@ -39,24 +39,19 @@ int		getlevel(t_env *e, double z)
 {
 	t_color		color;
 
-	if (z <= (e->z_min + e->z_div))
-	{
-		color.color1 = 0x000000;
-		color.color2 = e->color[e->cnum][0];
-		return (findcolor(&color, z, e->z_min, (e->z_min + e->z_div)));
-	}
-	else if (z <= (e->z_min + e->z_div * 2))
+	if (z < e->z_min || z > e->z_max)
+		return (0);
+	if (z <= e->z_mid && z >= e->z_min)
 	{
 		color.color1 = e->color[e->cnum][0];
 		color.color2 = e->color[e->cnum][1];
-		return (findcolor(&color, z, (e->z_min + e->z_div), \
-		(e->z_min + e->z_div * 2)));
+		return (findcolor(&color, z, e->z_min, e->z_mid));
 	}
-	else if (z <= e->z_max)
+	else if (z <= e->z_max && z >= e->z_mid)
 	{
 		color.color1 = e->color[e->cnum][1];
 		color.color2 = e->color[e->cnum][2];
-		return (findcolor(&color, z, (e->z_min + e->z_div * 2), e->z_max));
+		return (findcolor(&color, z, e->z_mid, e->z_max));
 	}
 	return (0);
 }

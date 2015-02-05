@@ -23,7 +23,7 @@ void	horline(t_env *e, t_coord *p1, t_coord *p2, int x)
 	{
 		y = p1->y - 1;
 		z = p1->z;
-		while (++y < p2->y)
+		while (++y < p2->y && (z <= e->z_max && z >= e->z_min))
 		{
 			pixel_put(e, x, y, getlevel(e, z));
 			z += pasz;
@@ -33,7 +33,7 @@ void	horline(t_env *e, t_coord *p1, t_coord *p2, int x)
 	{
 		y = p2->y - 1;
 		z = p2->z;
-		while (++y < p1->y)
+		while (++y < p1->y && (z <= e->z_max && z >= e->z_min))
 		{
 			pixel_put(e, x, y, getlevel(e, z));
 			z += pasz;

@@ -44,7 +44,7 @@ typedef struct		s_env
 	double			scale;
 	int				z_max;
 	int				z_min;
-	int				z_div;
+	double			z_mid;
 	double			x_offset;
 	double			y_offset;
 	double			x_origin;

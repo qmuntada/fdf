@@ -38,7 +38,7 @@ void	draw_left_h(t_env *e, t_coord *p1, t_coord *p2)
 	{
 		pixel_put(e, x, p2->y + ((p1->y - p2->y) * (x - p2->x)) / \
 			(p1->x - p2->x), getlevel(e, z));
-		z -= e->pasz;
+		z += e->pasz;
 	}
 }
 
@@ -53,7 +53,7 @@ void	draw_up_v(t_env *e, t_coord *p1, t_coord *p2)
 	{
 		pixel_put(e, p2->x + ((p1->x - p2->x) * (y - p2->y)) / \
 			(p1->y - p2->y), y, getlevel(e, z));
-		z -= e->pasz;
+		z += e->pasz;
 	}
 }
 
@@ -74,7 +74,7 @@ void	draw_down_v(t_env *e, t_coord *p1, t_coord *p2)
 
 void	ligne(t_env *e, t_coord *p1, t_coord *p2)
 {
-	if ((p2->x - p1->x) > (p2->y - p1->y))
+	if (abs(p2->x - p1->x) > abs(p2->y - p1->y))
 		e->pasz = (p2->z - p1->z) / (p2->x - p1->x);
 	else
 		e->pasz = (p2->z - p1->z) / (p2->y - p1->y);

@@ -81,13 +81,13 @@ int		eventkey(t_env *e, int keycode)
 	else if (keycode == 115)
 		e->y_offset += 100;
 	else if (keycode == 65362 && e->scale < 150)
-		e->scale += 0.25;
-	else if (keycode == 65364 && e->scale > 2)
-		e->scale -= 0.25;
+		e->scale *= 1.5;
+	else if (keycode == 65364 && e->scale / 1.5 > 2)
+		e->scale /= 1.5;
 	else if (keycode == 65453)
-		e->height -= 0.1;
+		e->height -= 1.0;
 	else if (keycode == 65451)
-		e->height += 0.1;
+		e->height += 1.0;
 	else if (keycode == 113)
 		e = revarray(e, 1);
 	else if (keycode == 101)

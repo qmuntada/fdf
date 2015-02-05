@@ -35,10 +35,10 @@ void	fillbottri(t_coord *p1, t_coord *p2, t_coord *p3, t_env *e)
 	p5.y = p1->y;
 	p4.z = p1->z;
 	p5.z = p1->z;
-	e->pasy1 = (double)(p2->y - p1->y) / (double)(p2->x - p1->x);
-	e->pasy2 = (double)(p3->y - p1->y) / (double)(p3->x - p1->x);
-	e->pasz1 = (double)(p2->z - p1->z) / (double)(p2->x - p1->x);
-	e->pasz2 = (double)(p3->z - p1->z) / (double)(p3->x - p1->x);
+	e->pasy1 = (p2->y - p1->y) / (p2->x - p1->x);
+	e->pasy2 = (p3->y - p1->y) / (p3->x - p1->x);
+	e->pasz1 = (p2->z - p1->z) / (p2->x - p1->x);
+	e->pasz2 = (p3->z - p1->z) / (p3->x - p1->x);
 	x = p1->x - 1;
 	while (++x <= p2->x)
 	{
@@ -60,10 +60,10 @@ void	filltoptri(t_coord *p1, t_coord *p2, t_coord *p3, t_env *e)
 	p5.y = p3->y;
 	p4.z = p3->z;
 	p5.z = p3->z;
-	e->pasy1 = (double)(p3->y - p1->y) / (double)(p3->x - p1->x);
-	e->pasy2 = (double)(p3->y - p2->y) / (double)(p3->x - p2->x);
-	e->pasz1 = (double)(p3->z - p1->z) / (double)(p3->x - p1->x);
-	e->pasz2 = (double)(p3->z - p2->z) / (double)(p3->x - p2->x);
+	e->pasy1 = (p3->y - p1->y) / (p3->x - p1->x);
+	e->pasy2 = (p3->y - p2->y) / (p3->x - p2->x);
+	e->pasz1 = (p3->z - p1->z) / (p3->x - p1->x);
+	e->pasz2 = (p3->z - p2->z) / (p3->x - p2->x);
 	x = p3->x + 1;
 	while (--x > p1->x)
 	{
@@ -89,13 +89,9 @@ void	draw_triangle(t_coord *p1, t_coord *p2, t_coord *p3, t_env *e)
 			filltoptri(p1, p2, p3, e);
 		else
 		{
-			p4.y = (int)(p1->y + ((float)(p2->x - p1->x) / \
-						(float)(p3->x - p1->x))
-					* (p3->y - p1->y));
+			p4.y = (p1->y + ((p2->x - p1->x) / (p3->x - p1->x)) * (p3->y - p1->y));
 			p4.x = p2->x;
-			p4.z = (int)(p1->z + ((float)(p2->x - p1->x) / \
-						(float)(p3->x - p1->x))
-					* (p3->z - p1->z));
+			p4.z = (p1->z + ((p2->x - p1->x) / (p3->x - p1->x)) * (p3->z - p1->z));
 			fillbottri(p1, p2, &p4, e);
 			filltoptri(p2, &p4, p3, e);
 		}

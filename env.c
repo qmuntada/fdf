@@ -80,7 +80,7 @@ t_env	initenv(int length, int width, int **array, int **color)
 	e = absarray(&e);
 	e.color = color;
 	e.cnum = 0;
-	e.z_div = (e.z_min + e.z_max) / 3;
+	e.z_mid = (e.z_min + e.z_max) / 2.0;
 	e.scale = ((double)(WIDTH + HEIGHT) / 2.0) / \
 				((double)(e.width + e.length) / 2.0);
 	e.cte1 = 0.75;
