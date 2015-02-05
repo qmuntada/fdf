@@ -6,7 +6,7 @@
 /*   By: qmuntada <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 11:33:54 by qmuntada          #+#    #+#             */
-/*   Updated: 2015/01/19 16:32:58 by qmuntada         ###   ########.fr       */
+/*   Updated: 2014/12/02 14:25:25 by qmuntada         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define C_MAGENTA      "\033[35m"
 # define C_CYAN         "\033[36m"
 # define C_GRAY         "\033[37m"
-# define BUFF_SIZE 100000
+# define BUFF_SIZE 1000
 
 typedef struct		s_list
 {
@@ -68,6 +68,7 @@ char				*ft_strstr(const char *s1, const char *s2);
 char				*ft_strnstr(const char *s1, const char *s2, size_t n);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
+char				*ft_strconc(char *str, char start, char end);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
 char				*ft_strnew(size_t size);
@@ -110,5 +111,8 @@ int					ft_strcf(char *str, char c);
 void				ft_lstclear(t_list **list);
 t_list				*ft_lstnclear(t_list **list, int nb);
 int					get_next_line(int fd, char **line);
+double				ft_clamp(double x, double min, double max);
+double				ft_mix(double x, double y, double a);
+double				ft_smoothstep(double edge1, double edge2, double x);
 
 #endif

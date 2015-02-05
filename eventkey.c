@@ -82,7 +82,7 @@ int		eventkey(t_env *e, int keycode)
 		e->y_offset += 100;
 	else if (keycode == 65362 && e->scale < 150)
 		e->scale *= 1.5;
-	else if (keycode == 65364 && e->scale / 1.5 > 2)
+	else if (keycode == 65364 && e->scale / 1.5 > 0.5)
 		e->scale /= 1.5;
 	else if (keycode == 65453)
 		e->height -= 1.0;

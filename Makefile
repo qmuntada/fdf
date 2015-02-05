@@ -24,12 +24,12 @@ all : $(NAME)
 .PHONY : linux libft clean fclean re norme
 
 $(NAME) : libft
-	@echo "Creating MAC executable $@ ..."
+	@echo "Creating MAC executable $(NAME) ..."
 	@gcc $(CFLAGS) -c $(SRC)
 	@gcc -o $(NAME) $(OBJ) $(LIBX)
 
 linux: libft
-	@echo "Creating LINUX executable $@ ..."
+	@echo "Creating LINUX executable $(NAME) ..."
 	@gcc $(CFLAGS) -c $(SRC)
 	@gcc -o $(NAME) $(OBJ) $(LIBXL)
 

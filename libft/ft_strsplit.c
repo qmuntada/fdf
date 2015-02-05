@@ -12,76 +12,46 @@
 
 #include "libft.h"
 
-static size_t	count_w(char const *s, char c)
+static size_t			ft_count_words(char *s, char c)
 {
-	size_t		i;
-	size_t		j;
+	size_t				nb_words;
 
-	i = 0;
-	j = 0;
-	while (s[i])
+	while (*s && *s == c)
+		++ s;
+	nb_words = (*s ? 1 : 0);
+	while (*s)
 	{
-		while (s[i] == c)
-			i++;
-		if (s[i] != c && s[i])
-		{
-			j++;
-			i++;
-			while (s[i] != c && s[i])
-				i++;
-		}
+		if (*s == c && s[1] && s[1] != c)
+			++ nb_words;
+		++ s;
 	}
-	return (j);
+	return (nb_words);
 }
 
-static char		*add_w(size_t *i, char const *s, char c)
+char					**ft_strsplit(char const *s, char c)
 {
-	size_t		size;
-	size_t		j;
-	char		*word;
+	size_t				nb_words;
+	char				*wrd_begin;
+	char				**result;
 
-	size = *i;
-	j = 0;
-	while (s[size] && s[size] != c)
-		size++;
-	word = ft_strnew(size - *i);
-	if (word)
+	nb_words = ft_count_words((char *)s, c);
+	result = (char **)malloc(sizeof(char *) * (nb_words + 1));
+	if (!result)
+		return (NULL);
+	wrd_begin = (char *)s;
+	while (*s)
 	{
-		while (*i < size)
+		if (*s == c)
 		{
-			word[j] = s[*i];
-			j++;
-			*i += 1;
+			if (wrd_begin != s)
+				*(result ++) = ft_strsub(wrd_begin, 0, s - wrd_begin);
+			wrd_begin = (char *)s + 1;
 		}
-		return (word);
+		++ s;
 	}
-	return (0);
+	if (wrd_begin != s)
+		*(result ++) = ft_strsub(wrd_begin, 0, s - wrd_begin);
+	*result = NULL;
+	return (result - nb_words);
 }
 
-char			**ft_strsplit(char const *s, char c)
-{
-	char		**tab;
-	size_t		o;
-	size_t		*i;
-	size_t		j;
-
-	o = 0;
-	i = &o;
-	j = 0;
-	tab = NULL;
-	if (s)
-		tab = (char **)malloc(sizeof(char *) * (count_w(s, c) + 1));
-	if (tab)
-	{
-		while (j < count_w(s, c))
-		{
-			while (s[*i] == c)
-				*i += 1;
-			if (s[*i] != c && s[*i])
-				tab[j++] = add_w(i, s, c);
-		}
-		tab[j] = 0;
-		return (tab);
-	}
-	return (0);
-}
