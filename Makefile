@@ -15,8 +15,8 @@ CFLAGS = -Wall -Werror -Wextra
 SRC = fdf.c color.c command.c display.c draw.c draw_triangle.c env.c \
 		 eventkey.c height.c isometric.c parallel.c
 OBJ = $(SRC:.c=.o)
-LIBX = -lm -I/usr/X11/include -L/usr/X11/lib -lX11 -lXext -lmlx libft/libft.a
-LIBXL = -lm libft/libft.a -L/usr/lib/X11 -lmlx -lXext -lX11
+LIBX = -lm -I/usr/X11/include -L/usr/X11/lib -lX11 -lXext -lmlx -L /libft/ -lft
+LIBXL = -lm -L libft/ -lft -L/usr/lib/X11 -lmlx -lXext -lX11
 
 
 all : $(NAME)

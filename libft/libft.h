@@ -16,6 +16,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <math.h>
 
 # define C_NONE         "\033[0m"
 # define C_BOLD         "\033[1m"
@@ -35,6 +36,13 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct		s_vec3
+{
+	double			x;
+	double			y;
+	double			z;
+}					t_vec3;
 
 void				ft_putchar(char c);
 void				ft_putstr(char const *str);
@@ -114,5 +122,19 @@ int					get_next_line(int fd, char **line);
 double				ft_clamp(double x, double min, double max);
 double				ft_mix(double x, double y, double a);
 double				ft_smoothstep(double edge1, double edge2, double x);
+double				veclength(t_vec3 *vec);
+void				vecnorm(t_vec3 *vec);
+double				vecdot(t_vec3 *a, t_vec3 *b);
+t_vec3				veccross(t_vec3 *a, t_vec3 *b);
+t_vec3				vecsub(t_vec3 *a, t_vec3 *b);
+t_vec3				vecopplus(t_vec3 *a, double x);
+t_vec3				vecopdiv(t_vec3 *a, double x);
+t_vec3				vecdiv(t_vec3 *a, t_vec3 *b);
+t_vec3				vecreflect(t_vec3 *i, t_vec3 *n);
+void				vecclamp(t_vec3 *vec, double a, double b);
+t_vec3				vecadd(t_vec3 *a, t_vec3 *b);
+t_vec3				vecprod(t_vec3 *a, t_vec3 *b);
+t_vec3				vecopx(t_vec3 *a, double x);
+double				vecdistance(t_vec3 *a, t_vec3 *b);
 
 #endif
